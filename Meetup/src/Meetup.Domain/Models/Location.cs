@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Meetup.Domain.Models
 {
@@ -9,5 +10,7 @@ namespace Meetup.Domain.Models
         public string Street { get; set; }
         public string HouseNumber { get; set; }
         public string RoomNumber { get; set; }
+
+        public List<Meeting> Meetings { get; set; }
     }
 }
