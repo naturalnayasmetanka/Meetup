@@ -1,7 +1,7 @@
-﻿using Meetup.Domain.Models;
+﻿using Meetup.Domain.ModelConfigurations;
+using Meetup.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
 
 namespace Meetup.Persistence.DbContexts
 {
@@ -16,12 +16,15 @@ namespace Meetup.Persistence.DbContexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            _ = optionsBuilder.UseSqlServer(_configuration.GetConnectionString("MSSqlServerDb"));
+            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("MSSqlServerMeetupDb"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+            _ = modelBuilder.ApplyConfiguration(new MeetingModelConfiguration());
+            _ = modelBuilder.ApplyConfiguration(new MeetingTypeModelConfiguration());
+            _ = modelBuilder.ApplyConfiguration(new LocationModelConfiguration());
+            _ = modelBuilder.ApplyConfiguration(new TagModelConfiguration());
         }
 
         public DbSet<Meeting> Meetings { get; set; }
