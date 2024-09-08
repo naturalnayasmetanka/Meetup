@@ -1,7 +1,9 @@
-﻿namespace Meetup.Domain.Models
+﻿using System;
+
+namespace Meetup.Domain.Models
 {
-    public class Entity<T>
+    public class Entity
     {
-        public T Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

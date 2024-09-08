@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Meetup.Domain.Models
 {
-    public class Tag: Entity<Guid>
+    public class Tag: Entity
     {
         public string Name { get; set; }
 

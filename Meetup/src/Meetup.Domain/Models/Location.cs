@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Meetup.Domain.Models
 {
-    public class Location : Entity<Guid>
+    public class Location : Entity
     {
         public string Country { get; set; }
         public string City { get; set; }
