@@ -8,7 +8,12 @@ namespace Meetup.Domain.ModelConfigurations
     {
         public void Configure(EntityTypeBuilder<MeetingType> builder)
         {
-            throw new System.NotImplementedException();
+            builder.ToTable(nameof(MeetingType)).HasKey(k => k.Id);
+            builder.Property(x => x.Name).HasMaxLength(50);
+           
+            builder.HasOne(x => x.Meeting)
+                .WithOne(x => x.MeetingType)
+                .HasForeignKey<Meeting>(x => x.MeetingTypeId);
         }
     }
 }

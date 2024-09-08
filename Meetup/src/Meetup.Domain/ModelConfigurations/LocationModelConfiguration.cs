@@ -8,7 +8,16 @@ namespace Meetup.Domain.ModelConfigurations
     {
         public void Configure(EntityTypeBuilder<Location> builder)
         {
-            throw new System.NotImplementedException();
+            builder.ToTable(nameof(Location)).HasKey(k => k.Id);
+
+            builder.Property(x => x.Country).HasMaxLength(50);
+            builder.Property(x => x.City).HasMaxLength(50);
+            builder.Property(x => x.Street).HasMaxLength(50);
+            builder.Property(x => x.HouseNumber).HasMaxLength(10);
+            builder.Property(x => x.RoomNumber).HasMaxLength(10);
+
+            builder.HasMany(x => x.Meetings)
+                .WithMany(x => x.Locations);
         }
     }
 }
