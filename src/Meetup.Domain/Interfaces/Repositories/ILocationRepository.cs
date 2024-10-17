@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Meetup.Domain.Interfaces.Repositories
 {
-    public interface IMeetingTypeRepository
+    public interface ILocationRepository
     {
         Task GetAll();
         Task GetById();
