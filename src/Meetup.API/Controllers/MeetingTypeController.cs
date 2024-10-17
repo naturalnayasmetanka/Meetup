@@ -7,33 +7,53 @@ namespace Meetup.API.Controllers
     [ApiController]
     public class MeetingTypeController : ControllerBase
     {
-        // GET: api/<MeetingTypeController>
+        public MeetingTypeController()
+        {
+            
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/<MeetingTypeController>/5
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<MeetingTypeController>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<MeetingTypeController>/5
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<MeetingTypeController>/5
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
