@@ -30,7 +30,7 @@ namespace Meetup.Persistence.Repositories
 
         public async Task<bool> DeleteAsync(Guid id)
         {
-            Tag item = await _context.Tags.FindAsync(id);
+            var item = await _context.Tags.FindAsync(id);
 
             if (item != null)
             {

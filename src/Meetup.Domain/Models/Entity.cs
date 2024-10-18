@@ -2,8 +2,8 @@
 
 namespace Meetup.Domain.Models
 {
-    public class Entity
+    public class Entity<T>
     {
-        public Guid Id { get; set; }
+        public T Id { get; set; }
     }
 }

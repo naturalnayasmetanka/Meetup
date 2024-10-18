@@ -16,7 +16,7 @@ namespace Meetup.Persistence.DbContexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("MSSqlServerMeetupDb"));
+            optionsBuilder.UseNpgsql(_configuration.GetConnectionString("PGSqlServerMeetupDb"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

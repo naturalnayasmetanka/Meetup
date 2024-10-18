@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Meetup.Persistence.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,12 +11,12 @@ namespace Meetup.Persistence.Migrations
                 name: "Location",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Country = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    City = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    Street = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    HouseNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
-                    RoomNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Country = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    City = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    Street = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    HouseNumber = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: true),
+                    RoomNumber = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -27,9 +27,9 @@ namespace Meetup.Persistence.Migrations
                 name: "MeetingType",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    MeetingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    MeetingId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -40,8 +40,8 @@ namespace Meetup.Persistence.Migrations
                 name: "Tag",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,11 +52,11 @@ namespace Meetup.Persistence.Migrations
                 name: "Meeting",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MeetingTypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    Description = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: true),
+                    Date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    MeetingTypeId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,8 +73,8 @@ namespace Meetup.Persistence.Migrations
                 name: "LocationMeeting",
                 columns: table => new
                 {
-                    LocationsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MeetingsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    LocationsId = table.Column<Guid>(type: "uuid", nullable: false),
+                    MeetingsId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -97,8 +97,8 @@ namespace Meetup.Persistence.Migrations
                 name: "MeetingTag",
                 columns: table => new
                 {
-                    MeetingsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TagsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    MeetingsId = table.Column<Guid>(type: "uuid", nullable: false),
+                    TagsId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
