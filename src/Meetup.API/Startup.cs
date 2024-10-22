@@ -1,3 +1,4 @@
+using Meetup.API.Extentions;
 using Meetup.Persistence.DbContexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,34 +20,36 @@ namespace Meetup.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            _ = services.AddControllers();
-            _ = services.AddSwaggerGen(c =>
+            services.AddControllers();
+            services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Meetup.API", Version = "v1" });
             });
 
-            _ = services.AddDbContext<ApplicationDbContext>();
+            services.AddDbContext<ApplicationDbContext>();
+            services.RegisterRepositories();
+            services.RegisterServices();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
-                _ = app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();
             }
 
-            _ = app.UseSwagger();
-            _ = app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Meetup.API v1"));
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Meetup.API v1"));
 
-            _ = app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
-            _ = app.UseRouting();
+            app.UseRouting();
 
-            _ = app.UseAuthorization();
+            app.UseAuthorization();
 
-            _ = app.UseEndpoints(endpoints =>
+            app.UseEndpoints(endpoints =>
             {
-                _ = endpoints.MapControllers();
+                endpoints.MapControllers();
             });
         }
     }
