@@ -1,38 +1,46 @@
 ﻿using Meetup.Application.DTOs;
 using Meetup.Application.Interfaces;
+using Meetup.Domain.Interfaces.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Meetup.Application.Services
 {
-    public class TagService : IBaseService<TagDTO>, ITagService
+    public class TagService : ITagService
     {
-        public TagService()
+        private readonly ITagRepository _tagRepository;
+
+        public TagService(ITagRepository tagRepository)
         {
-            
+            _tagRepository = tagRepository;
         }
 
-        public Task<TagDTO> Create(TagDTO item)
+        public async Task<List<TagDTO>> GetAllAsync()
+        {
+            var tags = await _tagRepository.GetAllAsync();
+
+            return null;
+        }
+
+        public async Task<TagDTO> GetItemByIdAsync(Guid itemId)
+        {
+            var tag = await _tagRepository.GetByIdAsync(itemId);
+
+            return null;
+        }
+
+        public Task<TagDTO> CreateAsync(TagDTO item)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<TagDTO> Get(TagDTO item)
+        public Task<bool> Remove(Guid itemId)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<List<TagDTO>> GetAll()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<TagDTO> Remove(TagDTO item)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<TagDTO> Update(TagDTO Item)
+        public Task<bool> Update(TagDTO Item)
         {
             throw new System.NotImplementedException();
         }

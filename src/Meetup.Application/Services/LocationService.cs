@@ -1,11 +1,12 @@
 ﻿using Meetup.Application.DTOs;
 using Meetup.Application.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Meetup.Application.Services
 {
-    public class LocationService : IBaseService<LocationDTO>, ILocationService
+    public class LocationService : ILocationService
     {
         public LocationService()
         {
@@ -17,7 +18,7 @@ namespace Meetup.Application.Services
             throw new System.NotImplementedException();
         }
 
-        public Task<LocationDTO> Get(LocationDTO item)
+        public Task<LocationDTO> GetItem(LocationDTO item)
         {
             throw new System.NotImplementedException();
         }
@@ -27,12 +28,12 @@ namespace Meetup.Application.Services
             throw new System.NotImplementedException();
         }
 
-        public Task<LocationDTO> Remove(LocationDTO item)
+        public Task<bool> Remove(Guid itemId)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<LocationDTO> Update(LocationDTO Item)
+        public Task<bool> Update(LocationDTO Item)
         {
             throw new System.NotImplementedException();
         }

@@ -1,11 +1,12 @@
 ﻿using Meetup.Application.DTOs;
 using Meetup.Application.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Meetup.Application.Services
 {
-    public class MeetingTypeService : IBaseService<MeetingTypeDTO>, IMeetingTypeService
+    public class MeetingTypeService : IMeetingTypeService
     {
         public MeetingTypeService()
         {
@@ -17,7 +18,7 @@ namespace Meetup.Application.Services
             throw new System.NotImplementedException();
         }
 
-        public Task<MeetingTypeDTO> Get(MeetingTypeDTO item)
+        public Task<MeetingTypeDTO> GetItem(MeetingTypeDTO item)
         {
             throw new System.NotImplementedException();
         }
@@ -27,12 +28,12 @@ namespace Meetup.Application.Services
             throw new System.NotImplementedException();
         }
 
-        public Task<MeetingTypeDTO> Remove(MeetingTypeDTO item)
+        public Task<bool> Remove(Guid itemId)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<MeetingTypeDTO> Update(MeetingTypeDTO Item)
+        public Task<bool> Update(MeetingTypeDTO Item)
         {
             throw new System.NotImplementedException();
         }
