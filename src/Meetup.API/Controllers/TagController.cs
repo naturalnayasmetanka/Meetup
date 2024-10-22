@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Meetup.API.Contracts.Requests;
+using Meetup.API.Contracts.Responses.Tags;
+using Meetup.Application.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Meetup.API.Controllers
 {
@@ -7,9 +11,11 @@ namespace Meetup.API.Controllers
     [ApiController]
     public class TagController : ControllerBase
     {
-        public TagController()
-        {
+        private readonly ITagService _tagService;
 
+        public TagController(ITagService tagService)
+        {
+            _tagService = tagService;
         }
 
         /// <summary>
@@ -17,9 +23,11 @@ namespace Meetup.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<TagResponse>> Get()
         {
-            return new string[] { "value1", "value2" };
+            var allTags = await _tagService.GetAllAsync();
+
+            return null;
         }
 
         /// <summary>
@@ -27,9 +35,11 @@ namespace Meetup.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<TagResponse> Get(TagRequest request)
         {
-            return "value";
+            var tag = await _tagService.GetItemByIdAsync(request.Id);
+
+            return null;
         }
 
         /// <summary>
